@@ -97,6 +97,10 @@ func SendSMPolicyAssociationUpdateByUERequestModification(
 	}
 
 	// UE SHOULD only create ONE QoS Flow in a request (TS 24.501 6.4.2.2)
+	// oie snssai
+	if len(qosRules) == 0 {
+		return nil, errors.New("QoS Rule Operation Unknown")
+	}
 	rule := qosRules[0]
 	flowDesc := qosFlowDescs[0]
 
